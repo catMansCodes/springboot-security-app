@@ -16,5 +16,9 @@ public class UserController {
         return "Hello there!";
     }
 
+    @GetMapping("/hey")
+    public String getHey() {
+        return "Hey there!";
+    }
 
 }
