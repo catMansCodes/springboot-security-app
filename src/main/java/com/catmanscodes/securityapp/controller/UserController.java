@@ -1,24 +1,28 @@
 package com.catmanscodes.securityapp.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import com.catmanscodes.securityapp.dto.UserDto;
+import com.catmanscodes.securityapp.service.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api/v1/users")
+@RequiredArgsConstructor
 public class UserController {
 
-    @GetMapping("/hi")
-    public String getHi() {
-        return "Hi there!";
+    private final UserService userService;
+
+    //1. Create a new User
+
+    @PostMapping("/create")
+    public ResponseEntity<UserDto> create(@RequestBody UserDto userDto) {
+
+        return ResponseEntity.ok(userService.createUser(userDto));
     }
 
-    @GetMapping("/hello")
-    public String getHello() {
-        return "Hello there!";
-    }
-
-    @GetMapping("/hey")
-    public String getHey() {
-        return "Hey there!";
-    }
 
 }
