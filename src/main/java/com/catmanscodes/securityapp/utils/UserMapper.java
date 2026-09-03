@@ -14,7 +14,8 @@ public class UserMapper {
                 user.getUserName(),
                 user.getEmail(),
                 user.getPassword(),
-                user.getIsActive()
+                user.getIsActive(),
+                user.getRole()
         );
     }
 
@@ -25,7 +26,8 @@ public class UserMapper {
                 userDto.userName(),
                 userDto.email(),
                 userDto.password(),
-                userDto.isActive()
+                userDto.isActive(),
+                userDto.role()
         );
     }
 

@@ -6,6 +6,7 @@ import com.catmanscodes.securityapp.exception.UserNotFoundedException;
 import com.catmanscodes.securityapp.repository.UserRepository;
 import com.catmanscodes.securityapp.utils.UserMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,6 +29,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         User user = userMapper.mapToUser(userDto);
 
         user.setIsActive(Boolean.TRUE);
+        user.setRole(userDto.role());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         userRepository.save(user);
@@ -46,7 +48,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getUserName())
                 .password(user.getPassword())
-                .authorities(Collections.emptyList())
+                .authorities(new SimpleGrantedAuthority(user.getRole()))
                 .build();
     }
 }

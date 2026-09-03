@@ -5,6 +5,7 @@ public record UserDto(
         String userName,
         String email,
         String password,
-        Boolean isActive
+        Boolean isActive,
+        String role
 ) {
 }
