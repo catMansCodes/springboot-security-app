@@ -1,5 +1,4 @@
-# Spring Security Examples
+# Spring Security Examples - Form & Session-based Authentication - feature/form-session-auth
 
-## 1. Form & Session-based Authentication - feature/form-session-auth
-## 2. Basic Auth - feature/basic-auth
-## 3. 
+- Just add the security JAR and configure the application properties for username & password.
+- create controler and test in a web browser. It will ask for username & password in form, also .logout enable by default.
